@@ -1,6 +1,7 @@
 # maven-bash-compgen
 
-Generates bash completion files for all maven plugins that support the official help mojo.
+Generates bash completion files for all maven plugins that support the official help mojo. Provides plugin goals and -D params to 
+[maven-bash-completion](http://github.com/edannenberg/maven-bash-completion)
 
 ## Installation
 
@@ -13,14 +14,20 @@ Just run the uberjar with plugin names seperated by whitespace, the following wo
 
     $ java -jar maven-bash-compgen-0.1.0-standalone.jar help release
 
+If you run it frequently you may want to put something like
+
+    $ alias mvn-bash-comp="java -jar ~/downloads/maven-bash-compgen-0.1.0-standalone.jar $1"
+
+into your .bashrc.
+
 ## Options
 
- Switches                                       Default                      Desc
- --------                                       -------                      ----
- -o, --output-path                              ~/.bash_completion_maven.d/  Where to write the plugin's bash completion file(s)
- -e, --no-only-expressions, --only-expressions  false                        Only includes -D params that have an expression value set.
- -l, --no-only-locals, --only-locals            false                        Only includes -D params that do not have an expression value set.
- -pl, --no-prefer-locals, --prefer-locals       false                        Ignore expression value of -D param if it has one. Per default the expression value has precedence.
+Switches | Default | Desc
+--- | --- | ---
+ -o, --output-path | ~/.bash_completion_maven.d/ | Where to write the plugin's bash completion file(s)
+ -e, --only-expressions | false | Only includes -D params that have an expression value set.
+ -l, --only-locals | false | Only includes -D params that do not have an expression value set.
+ -pl, --prefer-locals | false | Ignore expression value of -D param if it has one. Per default the expression value has precedence.
 
 ## License
 
