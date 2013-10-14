@@ -25,7 +25,7 @@
   "Returns all parameters of plugin:goal by running mvn plugin:help -Dgoal=goal -Ddetails"
   [plugin
    goal]
-  (let [regex (re-pattern "(?m)^\\s\\s\\s\\s[^mvn](\\S+)[\\s\\S]*?$(?:\\s\\s\\s\\s\\s\\s\\s[^Expression].+$){1,10}(?:\\s+Expression:\\s\\$\\{(.+?)\\})?")
+  (let [regex (re-pattern "(?m)^\\s{4}[^mvn](\\S+)[\\s\\S]*?$(?:\\s{7}[^Expression].+$){1,10}(?:\\s+Expression:\\s\\$\\{(.+?)\\})?")
         results (re-seq regex (:out (shell/sh "mvn" (apply str plugin ":help") "-Ddetail" (apply str "-Dgoal=" goal))))
         parsed-results (map #(cond
                                (and only-expressions (nil? (nth %1 2))) nil
